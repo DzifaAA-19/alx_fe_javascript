@@ -239,7 +239,10 @@ async function syncQuotes() {
     saveQuotes();
     populateCategories();
 
-    syncStatus.textContent = "Quotes synced with server.";
+    
+Check for UI elements or notifications for data updates or conflicts
+
+script.js doesn't contain: ["Quotes synced with server!"]
   } catch (err) {
     syncStatus.textContent = "Server sync failed.";
   }
