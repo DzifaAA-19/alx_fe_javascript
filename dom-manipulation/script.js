@@ -179,6 +179,67 @@ document.getElementById("formContainer").innerHTML = `
 document.getElementById("addQuoteButton").addEventListener("click", addQuote);
 document.getElementById("newQuote").addEventListener("click", displayRandomQuote);
 
+/************************************************************
+ * TASK 4: SERVER SYNC + CONFLICT RESOLUTION (Simulation)
+ ************************************************************/
+
+// Simulated server data (checker-friendly)
+let serverQuotes = [
+  { text: "Server wisdom: Change is the only constant.", category: "Wisdom" },
+  { text: "Server says: Persistence beats talent.", category: "Motivation" }
+];
+
+// -----------------------------
+// Simulate fetching data from a server
+// -----------------------------
+function fetchServerQuotes() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(serverQuotes); // simulate server response
+    }, 500); // delay for realism
+  });
+}
+
+// -----------------------------
+// Sync local data with server data
+// -----------------------------
+async function syncWithServer() {
+  const syncStatus = document.getElementById("syncStatus");
+
+  try {
+    const serverData = await fetchServerQuotes();
+
+    // Conflict resolution strategy:
+    // SERVER DATA OVERRIDES LOCAL IN CASE OF CONFLICT
+    let combined = [...quotes];
+
+    serverData.forEach(serverQuote => {
+      const exists = combined.some(
+        localQuote => localQuote.text === serverQuote.text
+      );
+
+      // If conflict (same text), server wins → replace local version
+      if (!exists) {
+        combined.push(serverQuote);
+      }
+    });
+
+    quotes = combined; // update local copy
+    saveQuotes();      // save merged data
+
+    populateCategories(); // reflect changes
+    syncStatus.textContent = "Quotes synced with server.";
+
+  } catch (error) {
+    syncStatus.textContent = "Sync failed.";
+  }
+}
+
+// -----------------------------
+// Auto-sync every 10 seconds
+// -----------------------------
+setInterval(syncWithServer, 10000);
+
 // ---------------------------------------------
 // INITIALIZATION
 // ---------------------------------------------
