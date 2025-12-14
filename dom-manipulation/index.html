@@ -9,7 +9,16 @@
 
   <h1>Dynamic Quote Generator</h1>
 
-  <!-- Display random quote -->
+  <!-- FILTER DROPDOWN -->
+  <label for="categoryFilter"><strong>Filter by Category:</strong></label>
+  <select id="categoryFilter" onchange="filterQuotes()">
+    <option value="all">All Categories</option>
+    <!-- JS will add more categories -->
+  </select>
+
+  <hr>
+
+  <!-- Display random or filtered quotes -->
   <div id="quoteDisplay"></div>
   <button id="newQuote">Show New Quote</button>
 
@@ -20,18 +29,16 @@
 
   <hr>
 
+  <!-- Import / Export JSON -->
   <h3>Import / Export Quotes</h3>
 
-  <!-- IMPORT JSON FILE (checker requires exact input + event) -->
   <input type="file" id="importFile" accept=".json" onchange="importFromJsonFile(event)" />
-
   <br><br>
-
-  <!-- EXPORT BUTTON (checker is looking for the WORDS "Export Quotes") -->
   <button id="exportButton">Export Quotes</button>
 
   <script src="script.js"></script>
 </body>
+
 </html>
 
 
