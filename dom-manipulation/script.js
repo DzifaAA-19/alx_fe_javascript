@@ -93,9 +93,12 @@ function displayRandomQuote() {
   sessionStorage.setItem("lastQuote", JSON.stringify(randomQuote));
 }
 
-// ---------------------------------------------
+function showRandomQuote() {
+  displayRandomQuote();
+}
+
 // Add a new quote
-// ---------------------------------------------
+
 function addQuote() {
   const textInput = document.getElementById("newQuoteText");
   const categoryInput = document.getElementById("newQuoteCategory");
