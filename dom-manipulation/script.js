@@ -258,3 +258,5 @@ setInterval(syncQuotes, 10000);
 
 populateCategories();
 loadLastQuote();
+createAddQuoteForm();
+
