@@ -1,6 +1,5 @@
-// -------------------------------------
 // Load quotes from localStorage
-// -------------------------------------
+
 let quotes = JSON.parse(localStorage.getItem("quotes")) || [
   { text: "Success is no accident.", category: "Motivation" },
   { text: "Happiness depends on ourselves.", category: "Life" },
@@ -12,9 +11,8 @@ function saveQuotes() {
   localStorage.setItem("quotes", JSON.stringify(quotes));
 }
 
-// -------------------------------------
 // Display random quote
-// -------------------------------------
+
 function displayRandomQuote() {
   const randomIndex = Math.floor(Math.random() * quotes.length);
   const randomQuote = quotes[randomIndex];
@@ -30,9 +28,9 @@ function showRandomQuote() {
   displayRandomQuote();
 }
 
-// -------------------------------------
+
 // Add a new quote
-// -------------------------------------
+
 function addQuote() {
   const textInput = document.getElementById("newQuoteText");
   const categoryInput = document.getElementById("newQuoteCategory");
