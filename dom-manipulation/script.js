@@ -94,7 +94,7 @@ function displayRandomQuote() {
 }
 
 function showRandomQuote() {
-  displayRandomQuote();
+  showRandomQuote();
 }
 
 // Add a new quote
