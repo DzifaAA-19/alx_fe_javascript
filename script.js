@@ -26,6 +26,10 @@ function displayRandomQuote() {
   sessionStorage.setItem("lastQuote", JSON.stringify(randomQuote));
 }
 
+function showRandomQuote() {
+  displayRandomQuote();
+}
+
 // -------------------------------------
 // Add a new quote
 // -------------------------------------
@@ -119,7 +123,7 @@ document
 // -------------------------------------
 document
   .getElementById("newQuote")
-  .addEventListener("click", displayRandomQuote);
+  .addEventListener("click", showRandomQuote);
 
 // Load last viewed quote
 loadLastQuote();
