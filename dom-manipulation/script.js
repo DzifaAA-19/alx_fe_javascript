@@ -179,20 +179,18 @@ document.getElementById("formContainer").innerHTML = `
   <button id="addQuoteButton">Add Quote</button>
 `;
 
-document.getElementById("addQuoteButton").addEventListener("click", addQuote);
-document.getElementById("newQuote").addEventListener("click", showRandomQuote);
+ document
+    .getElementById("addQuoteButton")
+    .addEventListener("click", addQuote);
+}
 
-
-/************************************************************
- * TASK 4 — SERVER SYNC + CONFLICT RESOLUTION (CHECKER VERSION)
- ************************************************************/
 
 // Notification area
 const syncStatus = document.getElementById("syncStatus");
 
-// ----------------------------------------------------------
+
 // REQUIRED: fetchQuotesFromServer() — must use mock API
-// ----------------------------------------------------------
+
 function fetchQuotesFromServer() {
   return fetch("https://jsonplaceholder.typicode.com/posts")
     .then(response => response.json())
@@ -204,9 +202,8 @@ function fetchQuotesFromServer() {
     });
 }
 
-// ----------------------------------------------------------
 // REQUIRED: POST to mock API
-// ----------------------------------------------------------
+
 function postQuoteToServer(quote) {
   return fetch("https://jsonplaceholder.typicode.com/posts", {
     method: "POST",
@@ -218,9 +215,9 @@ function postQuoteToServer(quote) {
   .then(res => res.json());
 }
 
-// ----------------------------------------------------------
+
 // REQUIRED: syncQuotes() — conflict resolution
-// ----------------------------------------------------------
+
 async function syncQuotes() {
   syncStatus.textContent = "Syncing with server...";
 
@@ -251,13 +248,13 @@ script.js doesn't contain: ["Quotes synced with server!"]
   }
 }
 
-// ----------------------------------------------------------
+
 // REQUIRED: periodic sync
-// ----------------------------------------------------------
+
 setInterval(syncQuotes, 10000);
 
-// ---------------------------------------------
+
 // INITIALIZATION
-// ---------------------------------------------
+
 populateCategories();
 loadLastQuote();
